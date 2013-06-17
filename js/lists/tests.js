@@ -1,11 +1,4 @@
 // Tests on inserts
-/*
-unShiftItem();
-insertItemAfter();
-pushItem();
-*/
-
-// Try to insert into an empty list using all the three methods with all the combinations
 
 insertObject = {
 	set_one: function(){
@@ -47,32 +40,11 @@ testForInserts = function(){
 testForInserts();
 
 
-
-
-
 // Tests on retreives
-/*
-getfirstItem();
-getItemAt();
-getLastItem();
-*/
-
-
 
 
 
 // Tests on deletes
-/*
-shiftItem();
-removeItemAt();
-popItem();
-*/
-
-
-
-
-
-
 
 
 

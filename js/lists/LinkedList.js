@@ -82,7 +82,7 @@
 			}
 			t.length++;
 
-			// pushing 100000 items takes nearly 17 ms compared to 63 seconds in the previous commit
+			// pushing 100000 items takes only 17 ms compared to 63 seconds in the previous commit
 			// Hardware used =>
 			// OS: Linux x86_64 (Ubuntu 12.04)
 			// Chromium: Version 25.0.1364.160 Ubuntu 12.04 (25.0.1364.160-0ubuntu0.12.04.1) 
@@ -188,13 +188,5 @@
 				return current;
 			}
 		};
-
-		// To implement
-
-		/*
-		sort();
-		splice(from, to);
-		slice(from, to);
-		*/
 	};
 })();
