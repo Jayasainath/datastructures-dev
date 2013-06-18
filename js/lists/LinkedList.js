@@ -11,16 +11,37 @@
 		};
 
 		// IMPROVE ME, PLEASE
-		t.getItemAt = function(index){ 
-			if(index > -1 && index < t.length){
+		t.getItemAt = function(index){
+			var len = t.length; 
+			if(index > -1 && index < len){
 				var current = t.head, i = 1;
 				if(index === 0){
 					return t.head.data;
+				}else if(index === len-1){
+
+				}else{
+					for(; i < len; i++){
+						current = current.next;
+						if(i === index){
+							return current.data;
+						}
+					}
+				}
+			}else{
+				return null;
+			}
+		};
+
+		t.getNodeAt = function(index){ 
+			if(index > -1 && index < t.length){
+				var current = t.head, i = 1;
+				if(index === 0){
+					return t.head;
 				}else{
 					for(; i < t.length; i++){
 						current = current.next;
 						if(i === index){
-							return current.data;				
+							return current;
 						}
 					}
 				}
@@ -36,27 +57,47 @@
 		// Setters
 		t.unShiftItem = function(item){
 			var node = { data: item, next: null };
-			// node.next = t.tail ? (t.head) : (t.tail = t.head);
-			if(!t.tail){
-				node.next = t.tail = t.head;	
-			}else{
-				node.next = t.head;
-			}
-			
+			node.next = t.tail ? (t.head) : (t.tail = t.head);
 			t.head = node;
 			t.length++;
-		}
+		};
+
+		t.insertItemBefore = function(item, index){
+			var node = {data: item, next: null}, len = t.length, previous, current, i = 1;
+			if(len > 0){
+				if(index > -1 && index < len){
+					if(index === 0){
+						t.unShiftItem(item);
+					}else{
+						current = previous = t.head;
+						for(; i < len; i++){
+							current = current.next;		
+							if(i === index){
+								previous.next = node;
+								node.next = current;
+								t.length++;
+								break;
+							}else{
+								previous = current;
+							}
+						}
+					}
+				}else if(index === len){
+					t.pushItem(item);
+				}
+			}
+		};
 
 		// IMPROVE ME, PLEASE
 		t.insertItemAfter = function(item, index){
-			var node = {data: item, next: null}, current, i = 0;
-			if(t.length > 0){
-				if(index > -1 && index < t.length){
-					if(index === t.length-1){
+			var node = {data: item, next: null}, len = t.length, current, i = 0;
+			if(len > 0){
+				if(index > -1 && index < len){
+					if(index === len-1){
 						t.pushItem(item);
 					}else{
 						current = t.head;
-						for(; i < t.length; i++){
+						for(; i < len; i++){
 							if(i === index){
 								node.next = current.next;
 								current.next = node;
@@ -67,9 +108,14 @@
 							}
 						}
 					}
+				}else if(index === -1){
+					node.next = t.head;
+					t.head = node;
+					t.length++;
 				}
 			}
 		};
+
 
 		t.pushItem = function(item){
 			var node = { data: item, next: null };
@@ -141,6 +187,29 @@
 
 
 		// Helpers
+
+		t.replaceItemAt = function(item, index){
+			var i = 1, len = t.length, current;
+			if(len > 0){
+				if(index > -1 && index < len){
+					if(index === 0){
+						t.head.data = item;
+					}else if(index === len-1){
+						t.tail.data = item;	
+					}else{
+						current = t.head;
+						for(; i < len; i++){
+							current = current.next;
+							if(i === index){
+								current.data = item;
+								break;
+							}
+						}
+					}
+				}
+			}
+		};
+
 		t.getLength = function(){
 			return t.length;
 		};

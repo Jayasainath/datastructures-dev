@@ -50,9 +50,9 @@ testForInserts();
 
 
 
-/*var a = [];
+/*
+var a = [];
 var ll = new LinkedList();
-
 
 (function(){
 	for (var i = 0; i < 4; i++) {
@@ -67,9 +67,9 @@ var ll = new LinkedList();
 	};
 	console.log("LinkedList is ready!" + ll.tail.data);
 })();
+*/
 
-
-
+/*
 runArrayTest = function(){
 	var past = new Date().getTime();
 	for (var i = 0; i < 4; i++) {
